@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "912640126996",
+    "firebase_url": "https://lageraho-1c5f5.firebaseio.com",
+    "project_id": "lageraho-1c5f5",
+    "storage_bucket": "lageraho-1c5f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912640126996:android:53390fc36b613488",
+        "android_client_info": {
+          "package_name": "com.example.lageraho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "912640126996-bl8nohojbpbdh78lf85b7omj3r5dvv3n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.lageraho",
+            "certificate_hash": "759ef97bb88d7f3e014d1adb2fc4bb0600313f00"
+          }
+        },
+        {
+          "client_id": "912640126996-1hiv71jdji20tulv3729p9h54jsvtkeq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAK2WzAJkxfSQFN5F_fla6yH4rXf6M968Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "912640126996-1hiv71jdji20tulv3729p9h54jsvtkeq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Lage Raho</string>
+    <string name="contact_fragment">Contact Fragment</string>
+    <string name="chats_fragment">Chats Fragment</string>
+    <string name="groups_fragment">Groups Fragment</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>
