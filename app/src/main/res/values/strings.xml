@@ -3,6 +3,14 @@
     <string name="contact_fragment">Contact Fragment</string>
     <string name="chats_fragment">Chats Fragment</string>
     <string name="groups_fragment">Groups Fragment</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Password</string>
+    <string name="login_button_text">Log In</string>
+    <string name="forget_password">Forget Password ?</string>
+    <string name="need_new_account">Need new account ?</string>
+    <string name="already_have_an_account">Already have an account ?</string>
+    <string name="phone_login_button">Phone</string>
+    <string name="create_account_button">Create Account</string>
+    <string name="or_login_using_your">or Login using your</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
 </resources>
