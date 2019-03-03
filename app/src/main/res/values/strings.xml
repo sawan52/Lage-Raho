@@ -12,5 +12,8 @@
     <string name="phone_login_button">Phone</string>
     <string name="create_account_button">Create Account</string>
     <string name="or_login_using_your">or Login using your</string>
+    <string name="find_friends_menu">Find Friends</string>
+    <string name="settings_menu">Settings</string>
+    <string name="sign_out_menu">Sign Out</string>
 
 </resources>
