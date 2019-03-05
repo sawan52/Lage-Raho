@@ -4,16 +4,16 @@
 
     <item android:id="@+id/menu_find_friend_option"
         android:title="@string/find_friends_menu"
-        app:showAsAction="never"/>
+        android:icon="@drawable/add_friends"/>
 
     <item
         android:id="@+id/menu_settings_option"
         android:title="@string/settings_menu"
-        app:showAsAction="never"/>
+        android:icon="@drawable/settings" />
 
     <item
         android:id="@+id/menu_signout_option"
-        android:title="@string/sign_out_menu"
-        app:showAsAction="never"/>
+        android:icon="@drawable/sign_out"
+        android:title="@string/sign_out_menu" />
 
 </menu>

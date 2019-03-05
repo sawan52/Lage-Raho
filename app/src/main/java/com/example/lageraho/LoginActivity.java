@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private FirebaseUser mFirebaseCurrentUser;
+    //private FirebaseUser mFirebaseCurrentUser;
     private Button loginButton, phoneLoginButton;
     private EditText userEmail, userPassword;
     private TextView needNewAccount, forgetPassword;
@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
+      //  mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
 
         loginButton = findViewById(R.id.login_button);
         phoneLoginButton = findViewById(R.id.phone_login_button);
@@ -101,7 +101,7 @@ public class LoginActivity extends AppCompatActivity {
             });
         }
     }
-
+/*
     @Override
     protected void onStart() {
         super.onStart();
@@ -109,9 +109,10 @@ public class LoginActivity extends AppCompatActivity {
             sendUserToMainActivity();
         }
     }
-
+*/
     private void sendUserToMainActivity() {
         Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(mainIntent);
         finish();
     }

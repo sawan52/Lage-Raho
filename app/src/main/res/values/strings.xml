@@ -15,5 +15,8 @@
     <string name="find_friends_menu">Find Friends</string>
     <string name="settings_menu">Settings</string>
     <string name="sign_out_menu">Sign Out</string>
+    <string name="user_name">User Name</string>
+    <string name="user_status">Hey, I am available now.</string>
+    <string name="update">Update</string>
 
 </resources>
