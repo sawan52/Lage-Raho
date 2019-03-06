@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             progressDialog.setTitle("Sign Up");
             progressDialog.setMessage("Please wait...");
-            progressDialog.setCanceledOnTouchOutside(true);
+            progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
