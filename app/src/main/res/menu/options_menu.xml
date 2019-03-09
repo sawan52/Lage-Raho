@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/menu_find_friend_option"
-        android:title="@string/find_friends_menu"
-        android:icon="@drawable/add_friends"/>
+        android:title="@string/find_friends_menu" />
+
+    <item android:id="@+id/menu_create_group_option"
+        android:title="@string/menu_create_group" />
 
     <item
         android:id="@+id/menu_settings_option"
-        android:title="@string/settings_menu"
-        android:icon="@drawable/settings" />
+        android:title="@string/settings_menu" />
 
     <item
         android:id="@+id/menu_signout_option"
-        android:icon="@drawable/sign_out"
         android:title="@string/sign_out_menu" />
 
 </menu>

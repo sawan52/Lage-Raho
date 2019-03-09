@@ -59,6 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void createNewAccount() {
+
         String email = userEmail.getText().toString();
         String password = userPassword.getText().toString();
 
@@ -85,6 +86,7 @@ public class RegisterActivity extends AppCompatActivity {
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
+
                     if (task.isSuccessful()){
 
                         String currentUserId = firebaseAuth.getCurrentUser().getUid();  // get the ID of current User i.e. New User

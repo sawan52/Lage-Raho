@@ -32,8 +32,8 @@ public class SettingsActivity extends AppCompatActivity {
     private String currentUserID;
     private ProgressDialog progressDialog;
 
-    private FirebaseAuth firebaseAuth;
-    private DatabaseReference rootDatabaseReference;
+    private FirebaseAuth firebaseAuth; // created a variable for firebase authentication
+    private DatabaseReference rootDatabaseReference; // created a for firebase Database reference
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +43,8 @@ public class SettingsActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        currentUserID = firebaseAuth.getCurrentUser().getUid();
-        rootDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        currentUserID = firebaseAuth.getCurrentUser().getUid();  // return the current userId
+        rootDatabaseReference = FirebaseDatabase.getInstance().getReference(); // provide the fireBase database reference
 
         updateAccountSettings = findViewById(R.id.update_setting_button);
         userName = findViewById(R.id.set_user_name);
@@ -62,10 +62,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void retrieveUserInfo() {
+
         rootDatabaseReference.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                         if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("Name") && (dataSnapshot.hasChild("Image")))){
 
                             String retrieveUserName = dataSnapshot.child("Name").getValue().toString();
@@ -74,8 +76,8 @@ public class SettingsActivity extends AppCompatActivity {
 
                             userName.setEnabled(false);
                             userStatus.setEnabled(false);
-                            userName.setText(retrieveUserName);
-                            userStatus.setText(retrieveUserStatus);
+                            userName.setText(retrieveUserName);  // set the userName of current User logged In.
+                            userStatus.setText(retrieveUserStatus);  // set the status of current User logged In.
 
                         }
                         else if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("Name"))){
@@ -85,8 +87,8 @@ public class SettingsActivity extends AppCompatActivity {
 
                             userStatus.setEnabled(false);
                             userName.setEnabled(false);
-                            userName.setText(retrieveUserName);
-                            userStatus.setText(retrieveUserStatus);
+                            userName.setText(retrieveUserName);  // set the userName of current User logged In.
+                            userStatus.setText(retrieveUserStatus);  // set the status of current User logged In.
 
                         }
                         else {
@@ -117,6 +119,7 @@ public class SettingsActivity extends AppCompatActivity {
             progressDialog.setCanceledOnTouchOutside(false);
             progressDialog.show();
 
+            // used HashMap data structure to store the info in Key - Value pair
             HashMap<String, String> profileMap = new HashMap<>();
             profileMap.put("uID", currentUserID);
             profileMap.put("Name", setUserName);

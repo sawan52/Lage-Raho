@@ -11,5 +11,9 @@
     <style name="PopupMenuStyle" parent="Theme.AppCompat.Light">
         <item name="android:background">@android:color/white</item>
     </style>
+    
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+
+    </style>
 
 </resources>
