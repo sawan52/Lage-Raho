@@ -1,12 +1,14 @@
 package com.example.lageraho;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -54,6 +56,20 @@ private DatabaseReference groupRef;
 
         // method shows the Group Names on the app screen
         retrieveAndDisplayGroups();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String currentGroupName = parent.getItemAtPosition(position).toString();  // get the group name when it is clicked and store it in String type variable
+
+                Intent groupChatIntent = new Intent(getContext(), GroupChatActivity.class);
+                groupChatIntent.putExtra("groupName", currentGroupName);
+                startActivity(groupChatIntent);
+
+
+            }
+        });
 
         return groupFragmentView;
     }

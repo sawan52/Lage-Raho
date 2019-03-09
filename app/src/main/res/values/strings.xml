@@ -19,5 +19,6 @@
     <string name="user_status">Hey, I am available now.</string>
     <string name="update">Update</string>
     <string name="menu_create_group">Create Group</string>
+    <string name="enter_message_to_send">Enter message to send…</string>
 
 </resources>
