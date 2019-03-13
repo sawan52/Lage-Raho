@@ -20,5 +20,9 @@
     <string name="update">Update</string>
     <string name="menu_create_group">Create Group</string>
     <string name="enter_message_to_send">Enter message to send…</string>
+    <string name="enter_your_mobile_number">Enter your Mobile Number</string>
+    <string name="enter_verification_code_here">Enter Verification Code</string>
+    <string name="send_verification_code">Send Verification Code</string>
+    <string name="verify_your_otp">Verify your OTP</string>
 
 </resources>
