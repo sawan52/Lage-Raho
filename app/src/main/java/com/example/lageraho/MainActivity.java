@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.menu_find_friend_option){
-
+            sendUserToFindFriendsActivity();
         }
         if (item.getItemId() == R.id.menu_settings_option){
             sendUserToSettingsActivity();
@@ -131,6 +131,12 @@ public class MainActivity extends AppCompatActivity {
             sendUserToLoginActivity();
         }
         return true;
+    }
+
+    private void sendUserToFindFriendsActivity() {
+        Intent findFriendsIntenet = new Intent(MainActivity.this, FindFriendsActivity.class);
+        startActivity(findFriendsIntenet);
+
     }
 
     private void requestNewGroup() {
@@ -197,8 +203,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void sendUserToSettingsActivity() {
         Intent settingsIntent = new Intent(MainActivity.this, SettingsActivity.class);
-        settingsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(settingsIntent);
-        finish();
     }
 }
