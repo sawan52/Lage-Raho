@@ -23,7 +23,7 @@
                 android:layout_marginTop="40dp"
                 android:src="@drawable/profile_image"
                 app:civ_border_color="@color/colorPrimary"
-                app:civ_border_width="1dp" />
+                app:civ_border_width="4dp" />
 
             <EditText
                 android:id="@+id/set_user_name"
