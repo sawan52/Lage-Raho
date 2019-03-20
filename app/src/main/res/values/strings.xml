@@ -24,5 +24,8 @@
     <string name="enter_verification_code_here">Enter Verification Code</string>
     <string name="send_verification_code">Send Verification Code</string>
     <string name="verify_your_otp">Verify your OTP</string>
+    <string name="visit_profile_user_name">User Name</string>
+    <string name="visit_profile_user_status">User Status</string>
+    <string name="visit_send_message">Send Message</string>
 
 </resources>

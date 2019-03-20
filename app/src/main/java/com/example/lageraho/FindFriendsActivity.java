@@ -1,5 +1,6 @@
 package com.example.lageraho;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,12 +56,26 @@ public class FindFriendsActivity extends AppCompatActivity {
 
         FirebaseRecyclerAdapter<Contacts, FindFriendViewHolder> adapter = new FirebaseRecyclerAdapter<Contacts, FindFriendViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull FindFriendViewHolder holder, int position, @NonNull Contacts model) {
+            protected void onBindViewHolder(@NonNull FindFriendViewHolder holder, final int position, @NonNull Contacts model) {
 
                 holder.userName.setText(model.getNames());
                 holder.userStatus.setText(model.getStatuss());
 
                 Picasso.get().load(model.getImages()).placeholder(R.drawable.profile_image).into(holder.profileImage);
+
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String visit_user_ID = getRef(position).getKey();
+
+                        Intent profileIntent = new Intent(FindFriendsActivity.this, ProfileActivity.class);
+                        profileIntent.putExtra("visit_user_ID", visit_user_ID);
+                        startActivity(profileIntent);
+
+                    }
+                });
+
             }
 
             @NonNull
