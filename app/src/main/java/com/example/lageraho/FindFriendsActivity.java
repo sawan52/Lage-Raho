@@ -50,6 +50,7 @@ public class FindFriendsActivity extends AppCompatActivity {
 
         super.onStart();
 
+        // pass the Contacts class object in FireBaseRecyclerOptions
         FirebaseRecyclerOptions<Contacts> options = new FirebaseRecyclerOptions.Builder<Contacts>()
                 .setQuery(usersReference, Contacts.class)
                 .build();
@@ -58,10 +59,10 @@ public class FindFriendsActivity extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull FindFriendViewHolder holder, final int position, @NonNull Contacts model) {
 
-                holder.userName.setText(model.getNames());
-                holder.userStatus.setText(model.getStatuss());
+                holder.userName.setText(model.getNames());  // set the userName
+                holder.userStatus.setText(model.getStatuss());  // set the userStatus
 
-                Picasso.get().load(model.getImages()).placeholder(R.drawable.profile_image).into(holder.profileImage);
+                Picasso.get().load(model.getImages()).placeholder(R.drawable.profile_image).into(holder.profileImage); // set the userImage
 
                 holder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override

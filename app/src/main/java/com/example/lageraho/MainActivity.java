@@ -134,8 +134,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendUserToFindFriendsActivity() {
-        Intent findFriendsIntenet = new Intent(MainActivity.this, FindFriendsActivity.class);
-        startActivity(findFriendsIntenet);
+        Intent findFriendsIntent = new Intent(MainActivity.this, FindFriendsActivity.class);
+        startActivity(findFriendsIntent);
 
     }
 

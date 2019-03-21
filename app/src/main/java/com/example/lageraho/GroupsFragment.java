@@ -54,14 +54,15 @@ private DatabaseReference groupRef;
         // initialize all the above fields
         initializeFields();
 
-        // method shows the Group Names on the app screen
+        // method shows the Group Names on the app screen using List View
         retrieveAndDisplayGroups();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String currentGroupName = parent.getItemAtPosition(position).toString();  // get the group name when it is clicked and store it in String type variable
+                // get the group name when it is clicked and store it in String type variable
+                String currentGroupName = parent.getItemAtPosition(position).toString();
 
                 Intent groupChatIntent = new Intent(getContext(), GroupChatActivity.class);
                 groupChatIntent.putExtra("groupName", currentGroupName);
@@ -88,7 +89,7 @@ private DatabaseReference groupRef;
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                // Set data structure is used to store Unique values, Set doesn't allow to store duplicates values
+                // 'Set' data structure is used to store Unique values, Set doesn't allow to store duplicates values
                 Set<String> set = new HashSet<>();
 
                 // uses Iterator to iterator throw each group Name

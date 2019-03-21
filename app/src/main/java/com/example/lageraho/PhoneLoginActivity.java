@@ -94,6 +94,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
                     progressDialog.setCanceledOnTouchOutside(false);
                     progressDialog.show();
 
+                    // check the Phone Auth credentials and verify the Code...
                     PhoneAuthCredential credential = PhoneAuthProvider.getCredential(mVerificationId, verificationCode);
                     signInWithPhoneAuthCredential(credential);
                 }

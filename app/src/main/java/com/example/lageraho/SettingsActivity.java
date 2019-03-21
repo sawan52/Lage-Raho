@@ -72,12 +72,14 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        // this method retrieve user info. from database and display it in the Settings Activity
         retrieveUserInfo();
 
         userProfileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                // Open the Gallery to selected Image for upload...
                 Intent galleryIntent = new Intent();
                 galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
                 galleryIntent.setType("image/*");
@@ -89,6 +91,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void retrieveUserInfo() {
 
+        // move to the current Login user ID and extract its details...
         rootDatabaseReference.child("Users").child(currentUserID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
@@ -96,8 +99,13 @@ public class SettingsActivity extends AppCompatActivity {
 
                         if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("Name") && (dataSnapshot.hasChild("Image")))) {
 
+                            // retrieve user name of current user ID
                             String retrieveUserName = dataSnapshot.child("Name").getValue().toString();
+
+                            // retrieve user status of current user ID
                             String retrieveUserStatus = dataSnapshot.child("Status").getValue().toString();
+
+                            // retrieve user image of current user ID
                             String retrieveUserImage = dataSnapshot.child("Image").getValue().toString();
 
                             userName.setEnabled(false);
@@ -105,11 +113,14 @@ public class SettingsActivity extends AppCompatActivity {
                             userName.setText(retrieveUserName);  // set the userName of current User logged In.
                             userStatus.setText(retrieveUserStatus);  // set the status of current User logged In.
 
-                            Picasso.get().load(retrieveUserImage).into(userProfileImage);
+                            Picasso.get().load(retrieveUserImage).into(userProfileImage); // set the userImage of current log in user...
 
                         } else if ((dataSnapshot.exists()) && (dataSnapshot.hasChild("Name"))) {
 
+                            // retrieve user name of current user ID
                             String retrieveUserName = dataSnapshot.child("Name").getValue().toString();
+
+                            // retrieve user status of current user ID
                             String retrieveUserStatus = dataSnapshot.child("Status").getValue().toString();
 
                             userStatus.setEnabled(false);
@@ -131,6 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void updateSettings() {
 
+        // the username and user status for updating it...
         String setUserName = userName.getText().toString();
         String setUserStatus = userStatus.getText().toString();
 
@@ -151,6 +163,7 @@ public class SettingsActivity extends AppCompatActivity {
             profileMap.put("Name", setUserName);
             profileMap.put("Status", setUserStatus);
 
+           // set the details of each user in correct user ID
             rootDatabaseReference.child("Users").child(currentUserID).setValue(profileMap)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
