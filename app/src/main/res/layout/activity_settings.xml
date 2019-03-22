@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".SettingsActivity">
 
+    <include
+        layout="@layout/app_bar_layout"
+        android:id="@+id/settings_toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -20,7 +24,7 @@
                 android:layout_height="200dp"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="80dp"
                 android:src="@drawable/profile_image"
                 app:civ_border_color="@color/colorPrimary"
                 app:civ_border_width="4dp" />

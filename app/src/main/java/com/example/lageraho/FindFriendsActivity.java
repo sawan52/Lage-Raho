@@ -94,7 +94,7 @@ public class FindFriendsActivity extends AppCompatActivity {
         adapter.startListening();
     }
 
-    public static class FindFriendViewHolder extends RecyclerView.ViewHolder{
+    public static class FindFriendViewHolder extends RecyclerView.ViewHolder {
 
         TextView userName, userStatus;
         CircleImageView profileImage;
