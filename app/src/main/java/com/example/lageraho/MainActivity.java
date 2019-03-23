@@ -36,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private TabsAccessorAdapter mTabsAccessorAdapter;
-    private FirebaseUser mFirebaseCurrentUser;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference rootDatabaseReference;
     private String currentUserID;
@@ -47,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
         rootDatabaseReference = FirebaseDatabase.getInstance().getReference();
 
         // Set the Toolbar for our App
@@ -68,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+        FirebaseUser mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
         // if user is not logged In, send him/her to the Login Activity
         if (mFirebaseCurrentUser == null){
             sendUserToLoginActivity();
@@ -84,6 +84,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
 
+        FirebaseUser mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
+
         if (mFirebaseCurrentUser != null){
 
             updateUserStatus("Offline");
@@ -91,10 +93,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        FirebaseUser mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
 
         if (mFirebaseCurrentUser != null){
 
@@ -104,8 +107,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void verifyUserExistence() {
+
         // get the current user ID
-        String currentUserID = mFirebaseCurrentUser.getUid();
+        String currentUserID = firebaseAuth.getCurrentUser().getUid();
         // using FireBase Database reference object to navigate through the database where user info is stored under "Users" section and
         // match for the Logged In user ID and then...
         rootDatabaseReference.child("Users").child(currentUserID).addValueEventListener(new ValueEventListener() {
@@ -156,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
             requestNewGroup();
         }
         if (item.getItemId() == R.id.menu_signout_option){
+            updateUserStatus("Offline");
             firebaseAuth.signOut();
             sendUserToLoginActivity();
         }

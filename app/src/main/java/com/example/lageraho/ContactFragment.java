@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -74,23 +75,48 @@ public class ContactFragment extends Fragment {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                        if (dataSnapshot.hasChild("Image")) {
+                        if (dataSnapshot.exists()){
 
-                            String userProfileImage = dataSnapshot.child("Image").getValue().toString();
-                            String userProfileName = dataSnapshot.child("Name").getValue().toString();
-                            String userProfileStatus = dataSnapshot.child("Status").getValue().toString();
 
-                            holder.userName.setText(userProfileName);
-                            holder.userStatus.setText(userProfileStatus);
+                            if (dataSnapshot.child("User State").hasChild("state")){
 
-                            Picasso.get().load(userProfileImage).placeholder(R.drawable.profile_image).into(holder.profileImage);
-                        } else {
+                                String date = dataSnapshot.child("User State").child("date").getValue().toString();
+                                String state = dataSnapshot.child("User State").child("state").getValue().toString();
+                                String time = dataSnapshot.child("User State").child("time").getValue().toString();
 
-                            String userProfileName = dataSnapshot.child("Name").getValue().toString();
-                            String userProfileStatus = dataSnapshot.child("Status").getValue().toString();
+                                if (state.equals("Online")){
 
-                            holder.userName.setText(userProfileName);
-                            holder.userStatus.setText(userProfileStatus);
+                                    holder.onlineIcon.setVisibility(View.VISIBLE);
+                                }
+                                else if (state.equals("Offline")){
+
+                                    holder.onlineIcon.setVisibility(View.INVISIBLE);
+
+                                }
+                            }
+                            else {
+
+                                holder.onlineIcon.setVisibility(View.INVISIBLE);
+                            }
+
+                            if (dataSnapshot.hasChild("Image")) {
+
+                                String userProfileImage = dataSnapshot.child("Image").getValue().toString();
+                                String userProfileName = dataSnapshot.child("Name").getValue().toString();
+                                String userProfileStatus = dataSnapshot.child("Status").getValue().toString();
+
+                                holder.userName.setText(userProfileName);
+                                holder.userStatus.setText(userProfileStatus);
+
+                                Picasso.get().load(userProfileImage).placeholder(R.drawable.profile_image).into(holder.profileImage);
+                            } else {
+
+                                String userProfileName = dataSnapshot.child("Name").getValue().toString();
+                                String userProfileStatus = dataSnapshot.child("Status").getValue().toString();
+
+                                holder.userName.setText(userProfileName);
+                                holder.userStatus.setText(userProfileStatus);
+                            }
                         }
                     }
 
@@ -121,6 +147,7 @@ public class ContactFragment extends Fragment {
 
         TextView userName, userStatus;
         CircleImageView profileImage;
+        ImageView onlineIcon;
 
         public ContactsViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -128,6 +155,7 @@ public class ContactFragment extends Fragment {
             userName = itemView.findViewById(R.id.users_profile_name);
             userStatus = itemView.findViewById(R.id.users_status);
             profileImage = itemView.findViewById(R.id.users_profile_image);
+            onlineIcon = itemView.findViewById(R.id.user_online_status);
 
         }
     }

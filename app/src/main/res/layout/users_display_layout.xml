@@ -42,7 +42,8 @@
                     android:layout_width="0dp"
                     android:layout_height="10dp"
                     android:layout_weight="1"
-                    android:src="@drawable/online" />
+                    android:src="@drawable/online"
+                    android:visibility="invisible"/>
 
             </LinearLayout>
 

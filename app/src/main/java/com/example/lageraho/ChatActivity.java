@@ -26,6 +26,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -81,6 +82,43 @@ public class ChatActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void displayLastSeen(){
+
+        rootReference.child("Users").child(messageSenderID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        if (dataSnapshot.child("User State").hasChild("state")){
+
+                            String date = dataSnapshot.child("User State").child("date").getValue().toString();
+                            String state = dataSnapshot.child("User State").child("state").getValue().toString();
+                            String time = dataSnapshot.child("User State").child("time").getValue().toString();
+
+                            if (state.equals("Online")){
+
+                                userLastSeen.setText("Online");
+                            }
+                            else if (state.equals("Offline")){
+
+                                userLastSeen.setText("Last Seen: " + date + " " + time);
+
+                            }
+
+                        }
+                        else {
+
+                            userLastSeen.setText("Offline");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
     }
 
     private void sendMessage() {
@@ -142,7 +180,7 @@ public class ChatActivity extends AppCompatActivity {
 
                         messageAdapter.notifyDataSetChanged();
 
-                        // scroll the message activity automatically down according to the number of messages present in that activity
+                        // scroll the message activity automatically down according to the number o f messages present in that activity
                         privateMessagesList.smoothScrollToPosition(privateMessagesList.getAdapter().getItemCount());
                     }
 
