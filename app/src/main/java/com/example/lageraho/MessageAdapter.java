@@ -23,28 +23,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
 
-    private List<Messages> userMessagesList ;
+    private List<Messages> userMessagesList;
     private FirebaseAuth firebaseAuth;
     private DatabaseReference userReference;
 
-    public MessageAdapter (List<Messages> userMessagesList){
+    public MessageAdapter(List<Messages> userMessagesList) {
 
         this.userMessagesList = userMessagesList;
-    }
-
-    public class MessageViewHolder extends RecyclerView.ViewHolder{
-
-        public TextView senderMessageText, receiverMessageText;
-        public CircleImageView receiverProfileImage;
-
-        public MessageViewHolder(@NonNull View itemView) {
-            super(itemView);
-
-            senderMessageText = itemView.findViewById(R.id.sender_message_text);
-            receiverMessageText = itemView.findViewById(R.id.receiver_message_text);
-            receiverProfileImage = itemView.findViewById(R.id.message_profile_image);
-
-        }
     }
 
     @NonNull
@@ -58,8 +43,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         return new MessageViewHolder(view);
     }
-
-
 
     @Override
     public void onBindViewHolder(@NonNull final MessageViewHolder messageViewHolder, int i) {
@@ -76,7 +59,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.hasChild("Image")){
+                if (dataSnapshot.hasChild("Image")) {
 
                     String receiverImage = dataSnapshot.child("Image").getValue().toString();
 
@@ -90,21 +73,20 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
             }
         });
 
-        if (fromMessageType.equals("text")){
+        if (fromMessageType.equals("text")) {
 
             messageViewHolder.receiverMessageText.setVisibility(View.INVISIBLE);
             messageViewHolder.receiverProfileImage.setVisibility(View.INVISIBLE);
+            messageViewHolder.senderMessageText.setVisibility(View.INVISIBLE);
 
-            if (fromUserID.equals(messageSenderID)){
+            if (fromUserID.equals(messageSenderID)) {
 
-                 messageViewHolder.senderMessageText.setBackgroundResource(R.drawable.sender_messages_layout);
-                 messageViewHolder.senderMessageText.setTextColor(Color.BLACK);
-                 messageViewHolder.senderMessageText.setText(messages.getMessage());
+                messageViewHolder.senderMessageText.setVisibility(View.VISIBLE);
+                messageViewHolder.senderMessageText.setBackgroundResource(R.drawable.sender_messages_layout);
+                messageViewHolder.senderMessageText.setTextColor(Color.BLACK);
+                messageViewHolder.senderMessageText.setText(messages.getMessage());
 
-            }
-            else {
-
-                messageViewHolder.senderMessageText.setVisibility(View.INVISIBLE);
+            } else {
 
                 messageViewHolder.receiverProfileImage.setVisibility(View.VISIBLE);
                 messageViewHolder.receiverMessageText.setVisibility(View.VISIBLE);
@@ -117,12 +99,25 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     }
 
-
-
     @Override
     public int getItemCount() {
 
         return userMessagesList.size();
+    }
+
+    public class MessageViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView senderMessageText, receiverMessageText;
+        public CircleImageView receiverProfileImage;
+
+        public MessageViewHolder(@NonNull View itemView) {
+            super(itemView);
+
+            senderMessageText = itemView.findViewById(R.id.sender_message_text);
+            receiverMessageText = itemView.findViewById(R.id.receiver_message_text);
+            receiverProfileImage = itemView.findViewById(R.id.message_profile_image);
+
+        }
     }
 
 }

@@ -19,6 +19,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.io.IOException;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -89,12 +92,24 @@ public class RegisterActivity extends AppCompatActivity {
 
                     if (task.isSuccessful()){
 
+                        String deviceToken = FirebaseInstanceId.getInstance().getToken();
+
                         String currentUserId = firebaseAuth.getCurrentUser().getUid();  // get the ID of current User i.e. New User
                         rootRef.child("Users").child(currentUserId).setValue("");  // set the ID in FireBase Database in Users
 
-                        progressDialog.dismiss();
-                        sendUserToMainActivity();
-                        Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                        rootRef.child("Users").child(currentUserId).child("Device_Token")
+                                .setValue(deviceToken).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+
+                                if (task.isSuccessful()){
+
+                                    progressDialog.dismiss();
+                                    sendUserToMainActivity();
+                                    Toast.makeText(RegisterActivity.this, "Account created successfully", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
                     else {
                         progressDialog.dismiss();

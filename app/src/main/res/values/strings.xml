@@ -29,5 +29,7 @@
     <string name="visit_send_message">Send Message</string>
     <string name="cancel_chat_request">Cancel Chat Request</string>
     <string name="send_chat_request">Send Chat Request</string>
+    <string name="receiver_messages_display_here">Receiver messages</string>
+    <string name="sender_messages_displays_here">Sender Messages</string>
 
 </resources>

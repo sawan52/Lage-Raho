@@ -18,6 +18,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     private TextView userProfileName, userProfileStatus;
     private Button sendMessageRequestButton, declineMessageRequestButton;
 
-    private DatabaseReference userReference, chatRequestReference, contactsReference;
+    private DatabaseReference userReference, chatRequestReference, contactsReference, notificationReference;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -41,6 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
         userReference = FirebaseDatabase.getInstance().getReference().child("Users");
         chatRequestReference = FirebaseDatabase.getInstance().getReference().child("Chat Requests");
         contactsReference = FirebaseDatabase.getInstance().getReference().child("Contacts");
+        notificationReference = FirebaseDatabase.getInstance().getReference().child("Notifications");
+
         senderUserID = firebaseAuth.getCurrentUser().getUid();
 
         // get the user ID of selected user from FindFriendActivity and pass it in this activity...
@@ -344,11 +348,27 @@ public class ProfileActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
-                                            // make the send Message Button enabled and change the current state to Request sent
-                                            sendMessageRequestButton.setEnabled(true);
-                                            currentState = "Request Sent";
-                                            // also change the text text for send message Button to CANCEL CHAT REQUEST
-                                            sendMessageRequestButton.setText(R.string.cancel_chat_request);
+                                            HashMap<String, String> chatNotification = new HashMap<>();
+                                            chatNotification.put("from", senderUserID);
+                                            chatNotification.put("type", "Friend Request");
+
+                                            notificationReference.child(receiverUserID).push()
+                                                    .setValue(chatNotification).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+
+                                                    if (task.isSuccessful()){
+
+                                                        // make the send Message Button enabled and change the current state to Request sent
+                                                        sendMessageRequestButton.setEnabled(true);
+                                                        currentState = "Request Sent";
+                                                        // also change the text text for send message Button to CANCEL CHAT REQUEST
+                                                        sendMessageRequestButton.setText(R.string.cancel_chat_request);
+
+                                                    }
+                                                }
+                                            });
+
 
                                         }
                                     });

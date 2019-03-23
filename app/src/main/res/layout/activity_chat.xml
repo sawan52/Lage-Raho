@@ -15,7 +15,8 @@
         android:id="@+id/private_messages_list_of_users"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/chat_toolbar">
+        android:layout_below="@+id/chat_toolbar"
+        android:layout_above="@+id/chat_linear_layout">
 
     </android.support.v7.widget.RecyclerView>
 

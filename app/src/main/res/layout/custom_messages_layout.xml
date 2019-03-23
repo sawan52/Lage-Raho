@@ -5,8 +5,8 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/message_profile_image"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginTop="10dp"
         android:src="@drawable/profile_image"/>
 
@@ -18,7 +18,7 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/message_profile_image"
         android:background="@drawable/receiver_messages_layout"
-        android:text="Receiver messages display here"
+        android:text="@string/receiver_messages_display_here"
         android:padding="10dp"
         android:textSize="14sp"/>
 
@@ -30,9 +30,9 @@
         android:layout_marginTop="10dp"
         android:layout_alignParentTop="@+id/receiver_message_text"
         android:background="@drawable/sender_messages_layout"
-        android:text="Sender Messages displays here"
+        android:text="@string/sender_messages_displays_here"
         android:padding="10dp"
-        android:textSize="14sp"/>
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"/>
 
 </RelativeLayout>
-

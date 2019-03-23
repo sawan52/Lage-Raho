@@ -142,6 +142,8 @@ public class ChatActivity extends AppCompatActivity {
 
                         messageAdapter.notifyDataSetChanged();
 
+                        // scroll the message activity automatically down according to the number of messages present in that activity
+                        privateMessagesList.smoothScrollToPosition(privateMessagesList.getAdapter().getItemCount());
                     }
 
                     @Override
