@@ -32,7 +32,6 @@
     <string name="receiver_messages_display_here">Receiver messages</string>
     <string name="sender_messages_displays_here">Sender Messages</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="collect_your_notes">Collect Your Notes</string>
     <string name="subject_name">Subject Name</string>
