@@ -1,4 +1,4 @@
-package com.example.lageraho;
+package com.example.lageraho.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.lageraho.R;
+import com.example.lageraho.adapters.TabsAccessorAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,16 +53,23 @@ public class MainActivity extends AppCompatActivity {
         // Set the Toolbar for our App
         mToolbar = findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Lage Raho BC...");
+        getSupportActionBar().setTitle("Lage Raho");
 
         // Set the View Pager for all the three Fragments
         mViewPager = findViewById(R.id.main_tabs_pager);
         mTabsAccessorAdapter = new TabsAccessorAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mTabsAccessorAdapter);
 
-        // Set all the three Tabs with customized name for the three Fragments
+        // Set all the Tabs with customized name for the three Fragments
         mTabLayout = findViewById(R.id.main_tabs);
         mTabLayout.setupWithViewPager(mViewPager);
+
+        mTabLayout.getTabAt(0).setIcon(R.drawable.ic_action_chat); // CHATS
+        mTabLayout.getTabAt(1).setIcon(R.drawable.ic_action_group); // GROUPS
+        mTabLayout.getTabAt(2).setIcon(R.drawable.ic_action_contacts); // CONTACTS
+        mTabLayout.getTabAt(3).setIcon(R.drawable.ic_action_requests); // REQUESTS
+        mTabLayout.getTabAt(4).setIcon(R.drawable.ic_action_notes); // NOTES
+
     }
 
     @Override

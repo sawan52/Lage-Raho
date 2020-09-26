@@ -1,4 +1,4 @@
-package com.example.lageraho;
+package com.example.lageraho.fragments;
 
 
 import android.app.AlertDialog;
@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.lageraho.R;
+import com.example.lageraho.classes.Contacts;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;

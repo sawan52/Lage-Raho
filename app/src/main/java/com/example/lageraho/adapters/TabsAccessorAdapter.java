@@ -1,9 +1,15 @@
-package com.example.lageraho;
+package com.example.lageraho.adapters;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+
+import com.example.lageraho.fragments.RequestsFragment;
+import com.example.lageraho.fragments.ChatsFragment;
+import com.example.lageraho.fragments.ContactFragment;
+import com.example.lageraho.fragments.GroupsFragment;
+import com.example.lageraho.fragments.NotesFragment;
 
 public class TabsAccessorAdapter extends FragmentPagerAdapter {
 
@@ -32,6 +38,9 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
             case 3:
                 RequestsFragment requestsFragment = new RequestsFragment();
                 return requestsFragment;
+            case 4:
+                NotesFragment notesFragment = new NotesFragment();
+                return notesFragment;
             default:
                 return null;
         }
@@ -40,7 +49,7 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
     // returns the number of tabs...
     @Override
     public int getCount() {
-        return 4;
+        return 5;
     }
 
 
@@ -50,6 +59,7 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position){
+            /*
             case 0:
                 return "Chats";
 
@@ -62,6 +72,9 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
             case 3:
                 return "Requests";
 
+            case 4:
+                return "Notes";
+*/
             default:
                 return null;
 

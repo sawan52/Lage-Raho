@@ -1,4 +1,4 @@
-package com.example.lageraho;
+package com.example.lageraho.adapters;
 
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -6,9 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.lageraho.R;
+import com.example.lageraho.classes.Messages;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

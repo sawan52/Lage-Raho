@@ -1,4 +1,4 @@
-package com.example.lageraho;
+package com.example.lageraho.classes;
 
 public class Contacts {
 

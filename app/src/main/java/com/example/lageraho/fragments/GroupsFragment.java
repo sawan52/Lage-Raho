@@ -1,4 +1,4 @@
-package com.example.lageraho;
+package com.example.lageraho.fragments;
 
 
 import android.content.Intent;
@@ -12,6 +12,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.lageraho.R;
+import com.example.lageraho.activities.GroupChatActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

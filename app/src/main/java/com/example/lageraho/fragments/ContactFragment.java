@@ -1,4 +1,4 @@
-package com.example.lageraho;
+package com.example.lageraho.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lageraho.classes.Contacts;
+import com.example.lageraho.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -76,7 +78,6 @@ public class ContactFragment extends Fragment {
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                         if (dataSnapshot.exists()){
-
 
                             if (dataSnapshot.child("User State").hasChild("state")){
 
