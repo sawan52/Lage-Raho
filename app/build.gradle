@@ -1,21 +1,17 @@
-//noinspection GradleDynamicVersion
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 29
-    // added this compileOptions{} to solve manifest merger failed problem.
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
+
     defaultConfig {
         applicationId "com.example.lageraho"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -27,30 +23,25 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //noinspection GradleCompatible
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-    implementation 'com.androidx.support:design:28.0.0'
-    implementation 'com.android.support.constraint:constraint-layout:2.0.1'
-    implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
+
+    // dependencies for firebase
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.google.firebase:firebase-messaging:20.3.0'
     implementation 'com.google.firebase:firebase-auth:19.4.0'
-    implementation 'com.google.firebase:firebase-database:19.4.0'
+    implementation 'com.google.firebase:firebase-database:19.5.0'
     implementation 'com.google.firebase:firebase-storage:19.2.0'
-    implementation 'com.androidx.support:support-v4:28.0.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
     // FireBaseUI library for FireBase Recycler View
     implementation 'com.firebaseui:firebase-ui-database:4.3.2'
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    implementation 'com.androidx.support:recyclerview-v7:28.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
-    // added this to solve manifest merger failed problem.
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.3.0-alpha02'
+    testImplementation 'junit:junit:4.13.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
 }

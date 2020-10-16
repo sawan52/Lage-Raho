@@ -8,7 +8,7 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/profile_image"/>
+        android:src="@drawable/profile_image" />
 
     <TextView
         android:id="@+id/receiver_message_text"
@@ -18,21 +18,21 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/message_profile_image"
         android:background="@drawable/receiver_messages_layout"
-        android:text="@string/receiver_messages_display_here"
         android:padding="10dp"
-        android:textSize="14sp"/>
+        android:text="@string/receiver_messages_display_here"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/sender_message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="@+id/receiver_message_text"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="10dp"
-        android:layout_alignParentTop="@+id/receiver_message_text"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/sender_messages_layout"
-        android:text="@string/sender_messages_displays_here"
         android:padding="10dp"
-        android:textSize="14sp"
-        android:layout_marginBottom="10dp"/>
+        android:text="@string/sender_messages_displays_here"
+        android:textSize="14sp" />
 
 </RelativeLayout>

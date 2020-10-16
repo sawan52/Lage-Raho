@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/menu_find_friend_option"
+    <item
+        android:id="@+id/menu_find_friend_option"
         android:title="@string/find_friends_menu" />
 
-    <item android:id="@+id/menu_create_group_option"
+    <item
+        android:id="@+id/menu_create_group_option"
         android:title="@string/menu_create_group" />
 
     <item

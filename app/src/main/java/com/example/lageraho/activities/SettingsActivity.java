@@ -3,16 +3,16 @@ package com.example.lageraho.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.lageraho.R;
 import com.google.android.gms.tasks.Continuation;
@@ -25,6 +25,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -174,7 +175,7 @@ public class SettingsActivity extends AppCompatActivity {
             profileMap.put("Name", setUserName);
             profileMap.put("Status", setUserStatus);
 
-           // set the details of each user in correct user ID
+            // set the details of each user in correct user ID
             rootDatabaseReference.child("Users").child(currentUserID).updateChildren(profileMap)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -217,7 +218,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-            if (resultCode == RESULT_OK){
+            if (resultCode == RESULT_OK) {
 
                 progressDialog.setTitle("Set Profile Image");
                 progressDialog.setMessage("Please wait...");
@@ -251,18 +252,17 @@ public class SettingsActivity extends AppCompatActivity {
                         }).addOnCompleteListener(new OnCompleteListener<Uri>() {
                             @Override
                             public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
                                     downloadUrl = task.getResult().toString();
 
                                     rootDatabaseReference.child("Users").child(currentUserID).child("Image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
-                                            if (task.isSuccessful()){
+                                            if (task.isSuccessful()) {
                                                 progressDialog.dismiss();
                                                 Toast.makeText(SettingsActivity.this, "Profile Image URL saved!", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else {
+                                            } else {
                                                 String errorMessage = task.getException().toString();
                                                 progressDialog.dismiss();
                                                 Toast.makeText(SettingsActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();

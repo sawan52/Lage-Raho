@@ -1,16 +1,16 @@
 package com.example.lageraho.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 
 import com.example.lageraho.R;
 import com.example.lageraho.activities.GroupChatActivity;
@@ -25,30 +25,28 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class GroupsFragment extends Fragment {
 
-private View groupFragmentView;
-private ListView listView;
-private ArrayAdapter<String> arrayAdapter;
-private ArrayList<String> list_of_groups = new ArrayList<>();
+    private View groupFragmentView;
+    private ListView listView;
+    private ArrayAdapter<String> arrayAdapter;
+    private ArrayList<String> list_of_groups = new ArrayList<>();
 
-private DatabaseReference groupRef;
+    private DatabaseReference groupRef;
 
     public GroupsFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        groupFragmentView =  inflater.inflate(R.layout.fragment_groups, container, false);
+        groupFragmentView = inflater.inflate(R.layout.fragment_groups, container, false);
 
         // created a database reference object for "Groups" section
         groupRef = FirebaseDatabase.getInstance().getReference().child("Groups");
@@ -98,10 +96,10 @@ private DatabaseReference groupRef;
                 Iterator iterator = dataSnapshot.getChildren().iterator();
 
                 // iterate to next group Name if it exists
-                while (iterator.hasNext()){
+                while (iterator.hasNext()) {
 
                     // add the group names in Set to remove duplicacy of same group Names
-                    set.add(((DataSnapshot)iterator.next()).getKey());
+                    set.add(((DataSnapshot) iterator.next()).getKey());
 
                 }
 
@@ -119,3 +117,4 @@ private DatabaseReference groupRef;
 
     }
 }
+

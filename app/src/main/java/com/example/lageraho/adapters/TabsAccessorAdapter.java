@@ -1,31 +1,28 @@
 package com.example.lageraho.adapters;
 
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.lageraho.fragments.RequestsFragment;
 import com.example.lageraho.fragments.ChatsFragment;
 import com.example.lageraho.fragments.ContactFragment;
 import com.example.lageraho.fragments.GroupsFragment;
 import com.example.lageraho.fragments.NotesFragment;
+import com.example.lageraho.fragments.RequestsFragment;
+import com.google.firebase.database.annotations.Nullable;
 
 public class TabsAccessorAdapter extends FragmentPagerAdapter {
 
     // This java file is meant for all the three tabs which consist of chats, groups & contact...
-
     public TabsAccessorAdapter(FragmentManager fm) {
         super(fm);
     }
 
-
     // return the object of each Tab on selected by user...
-
     @Override
     public Fragment getItem(int i) {
 
-        switch (i){
+        switch (i) {
             case 0:
                 ChatsFragment chatsFragment = new ChatsFragment();
                 return chatsFragment;
@@ -54,11 +51,10 @@ public class TabsAccessorAdapter extends FragmentPagerAdapter {
 
 
     // Set the Title of each Tab...
-
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        switch (position){
+        switch (position) {
             /*
             case 0:
                 return "Chats";

@@ -7,8 +7,8 @@
     tools:context=".activities.SettingsActivity">
 
     <include
-        layout="@layout/app_bar_layout"
-        android:id="@+id/settings_toolbar"/>
+        android:id="@+id/settings_toolbar"
+        layout="@layout/app_bar_layout" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -80,6 +80,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </RelativeLayout>
+
     </ScrollView>
 
 </RelativeLayout>

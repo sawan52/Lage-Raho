@@ -1,12 +1,12 @@
 package com.example.lageraho.activities;
 
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lageraho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -149,13 +149,12 @@ public class ProfileActivity extends AppCompatActivity {
                             }
                         });
                     }
-                }
-                else {
+                } else {
                     contactsReference.child(senderUserID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                            if (dataSnapshot.hasChild(receiverUserID)){
+                            if (dataSnapshot.hasChild(receiverUserID)) {
 
                                 currentState = "Friends";
                                 sendMessageRequestButton.setText("Remove this Contact");
@@ -201,7 +200,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                         acceptChatRequest();
                     }
-                    if (currentState.equals("Friends")){
+                    if (currentState.equals("Friends")) {
 
                         removeThatContact();
                     }
@@ -358,7 +357,7 @@ public class ProfileActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
 
-                                                    if (task.isSuccessful()){
+                                                    if (task.isSuccessful()) {
 
                                                         // make the send Message Button enabled and change the current state to Request sent
                                                         sendMessageRequestButton.setEnabled(true);

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Lage Raho</string>
+    <string name="app_name">What\'s up</string>
     <string name="contact_fragment">Contact Fragment</string>
     <string name="chats_fragment">Chats Fragment</string>
     <string name="groups_fragment">Groups Fragment</string>
@@ -31,9 +31,7 @@
     <string name="send_chat_request">Send Chat Request</string>
     <string name="receiver_messages_display_here">Receiver messages</string>
     <string name="sender_messages_displays_here">Sender Messages</string>
-
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="collect_your_notes">Collect Your Notes</string>
     <string name="subject_name">Subject Name</string>
-
 </resources>

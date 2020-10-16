@@ -13,69 +13,68 @@
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        app:civ_border_color="@color/colorPrimary"
-        app:civ_border_width="2dp"
         android:layout_marginTop="90dp"
-        android:src="@drawable/profile_image"/>
+        android:src="@drawable/profile_image"
+        app:civ_border_color="@color/colorPrimary"
+        app:civ_border_width="2dp" />
 
     <TextView
         android:id="@+id/visit_profile_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/visit_profile_user_name"
         android:layout_below="@+id/visit_profile_image"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/visit_profile_user_name"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/visit_profile_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/visit_profile_user_status"
         android:layout_below="@+id/visit_profile_username"
         android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
         android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/visit_profile_user_status"
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="25sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/send_message_request_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/visit_profile_status"
-        android:layout_marginTop="15dp"
         android:layout_marginLeft="65dp"
+        android:layout_marginTop="15dp"
         android:layout_marginRight="65dp"
-        android:textColor="@android:color/background_light"
         android:background="@drawable/buttons"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:text="@string/visit_send_message"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/decline_message_request_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/send_message_request_button"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="65dp"
+        android:layout_marginTop="5dp"
         android:layout_marginRight="65dp"
-        android:textColor="@android:color/background_light"
         android:background="@drawable/buttons"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:text="@string/cancel_chat_request"
         android:textAllCaps="false"
-        android:visibility="invisible"/>
-
+        android:textColor="@android:color/background_light"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="invisible" />
 
 </RelativeLayout>

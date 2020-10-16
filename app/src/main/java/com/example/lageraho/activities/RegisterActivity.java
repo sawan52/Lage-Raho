@@ -2,8 +2,6 @@ package com.example.lageraho.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -11,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lageraho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -64,20 +65,19 @@ public class RegisterActivity extends AppCompatActivity {
         String email = userEmail.getText().toString();
         String password = userPassword.getText().toString();
 
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             userEmail.setError("Email is required");
             userEmail.requestFocus();
             return;
         }
-        if (TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             userPassword.setError("Password is required");
             userPassword.requestFocus();
             return;
         }
-        if (password.length() < 8){
+        if (password.length() < 8) {
             Toast.makeText(RegisterActivity.this, "Password length should be more than 8 characters", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
 
             progressDialog.setTitle("Sign Up");
             progressDialog.setMessage("Please wait...");
@@ -88,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
 
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
 
                         String deviceToken = FirebaseInstanceId.getInstance().getToken();
 
@@ -100,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
 
-                                if (task.isSuccessful()){
+                                if (task.isSuccessful()) {
 
                                     progressDialog.dismiss();
                                     sendUserToMainActivity();
@@ -108,8 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 }
                             }
                         });
-                    }
-                    else {
+                    } else {
                         progressDialog.dismiss();
                         String errorMessage = task.getException().toString();
                         Toast.makeText(RegisterActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();

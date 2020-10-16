@@ -1,14 +1,7 @@
 package com.example.lageraho.activities;
 
 import android.content.Context;
-import androidx.support.annotation.NonNull;
-import androidx.support.annotation.Nullable;
-import androidx.support.v7.app.ActionBar;
-import androidx.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.support.v7.widget.LinearLayoutManager;
-import androidx.support.v7.widget.RecyclerView;
-import androidx.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +10,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lageraho.R;
 import com.example.lageraho.adapters.MessageAdapter;
 import com.example.lageraho.classes.Messages;
-import com.example.lageraho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,6 +29,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -86,31 +87,29 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
-    private void displayLastSeen(){
+    private void displayLastSeen() {
 
         rootReference.child("Users").child(messageSenderID)
                 .addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    public void onDataChange(@Nullable DataSnapshot dataSnapshot) {
 
-                        if (dataSnapshot.child("User State").hasChild("state")){
+                        if (dataSnapshot.child("User State").hasChild("state")) {
 
                             String date = dataSnapshot.child("User State").child("date").getValue().toString();
                             String state = dataSnapshot.child("User State").child("state").getValue().toString();
                             String time = dataSnapshot.child("User State").child("time").getValue().toString();
 
-                            if (state.equals("Online")){
+                            if (state.equals("Online")) {
 
                                 userLastSeen.setText("Online");
-                            }
-                            else if (state.equals("Offline")){
+                            } else if (state.equals("Offline")) {
 
                                 userLastSeen.setText("Last Seen: " + date + " " + time);
 
                             }
 
-                        }
-                        else {
+                        } else {
 
                             userLastSeen.setText("Offline");
                         }
@@ -126,11 +125,10 @@ public class ChatActivity extends AppCompatActivity {
     private void sendMessage() {
 
         final String messageText = inputEditText.getText().toString();
-        if (TextUtils.isEmpty(messageText)){
+        if (TextUtils.isEmpty(messageText)) {
 
             Toast.makeText(this, "Enter a message to send", Toast.LENGTH_SHORT).show();
-        }
-        else {
+        } else {
 
             String messageSenderReference = "Messages/" + messageSenderID + "/" + messageReceiverID;
             String messageReceiverReference = "Messages/" + messageReceiverID + "/" + messageSenderID;
@@ -154,11 +152,10 @@ public class ChatActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task task) {
 
-                    if (task.isSuccessful()){
+                    if (task.isSuccessful()) {
 
                         Toast.makeText(ChatActivity.this, "Message Sent Successfully", Toast.LENGTH_SHORT).show();
-                    }
-                    else {
+                    } else {
 
                         Toast.makeText(ChatActivity.this, "An error occurred", Toast.LENGTH_SHORT).show();
                     }

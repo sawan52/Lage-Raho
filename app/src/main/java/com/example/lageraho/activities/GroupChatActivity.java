@@ -1,10 +1,6 @@
 package com.example.lageraho.activities;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -12,6 +8,10 @@ import android.widget.ImageButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.lageraho.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.annotations.Nullable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -95,7 +96,7 @@ public class GroupChatActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     displayMessages(dataSnapshot);
                 }
             }
@@ -103,7 +104,7 @@ public class GroupChatActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
                     displayMessages(dataSnapshot);
                 }
             }
@@ -131,7 +132,7 @@ public class GroupChatActivity extends AppCompatActivity {
         // iterate for each children in each message key
         Iterator iterator = dataSnapshot.getChildren().iterator();
 
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
 
             // all these four variables must be in same order in which order the data is saved in FireBase Database.
             String chatName = (String) ((DataSnapshot) iterator.next()).getValue();
@@ -158,13 +159,11 @@ public class GroupChatActivity extends AppCompatActivity {
         String message = messageInputEditText.getText().toString();
 
         // checks for the message whether it is empty or not?
-        if (TextUtils.isEmpty(message)){
+        if (TextUtils.isEmpty(message)) {
 
             Toast.makeText(GroupChatActivity.this, "Enter some message first", Toast.LENGTH_SHORT).show();
 
-        }
-
-        else {
+        } else {
 
             // creates a Calendar instance for Date
             Calendar calendarForDate = Calendar.getInstance();
@@ -187,7 +186,7 @@ public class GroupChatActivity extends AppCompatActivity {
             messageInfoMap.put("userName", currentUserName);
             messageInfoMap.put("userSentMessage", message);
             messageInfoMap.put("userSentMessageDate", currentDate);
-            messageInfoMap.put("userSentMessageTime",currentTime);
+            messageInfoMap.put("userSentMessageTime", currentTime);
 
             // and then update it in the corresponding group with unique message key for each user's sent message.
             groupMessageKeyReference.updateChildren(messageInfoMap);
@@ -202,7 +201,7 @@ public class GroupChatActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                if (dataSnapshot.exists()){
+                if (dataSnapshot.exists()) {
 
                     // save the userName in currentUserName String type variable
                     currentUserName = dataSnapshot.child("Name").getValue().toString();

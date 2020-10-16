@@ -5,7 +5,7 @@ public class Messages {
 
     String from, message, type;
 
-    public Messages(){
+    public Messages() {
 
     }
 

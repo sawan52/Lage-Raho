@@ -2,13 +2,7 @@ package com.example.lageraho.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,10 +10,17 @@ import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.lageraho.R;
 import com.example.lageraho.adapters.TabsAccessorAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -78,10 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
         // if user is not logged In, send him/her to the Login Activity
-        if (mFirebaseCurrentUser == null){
+        if (mFirebaseCurrentUser == null) {
             sendUserToLoginActivity();
-        }
-        else {
+        } else {
             updateUserStatus("Online");
             // if he/she is Logged In then,
             // verify whether the user has updated his/her profile or not
@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
 
-        if (mFirebaseCurrentUser != null){
+        if (mFirebaseCurrentUser != null) {
 
             updateUserStatus("Offline");
 
@@ -108,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser mFirebaseCurrentUser = firebaseAuth.getCurrentUser();
 
-        if (mFirebaseCurrentUser != null){
+        if (mFirebaseCurrentUser != null) {
 
             updateUserStatus("Offline");
 
@@ -125,10 +125,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // checks whether his/her Name exists or not...if it exists send him/her a Toast message i.e. "Welcome" otherwise
-                if (dataSnapshot.child("Name").exists()){
+                if (dataSnapshot.child("Name").exists()) {
                     Toast.makeText(MainActivity.this, "Welcome!", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     // if Name not exists send the user to Settings Activity where they can update their profile first
                     sendUserToSettingsActivity();
                 }
@@ -159,16 +158,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        if (item.getItemId() == R.id.menu_find_friend_option){
+        if (item.getItemId() == R.id.menu_find_friend_option) {
             sendUserToFindFriendsActivity();
         }
-        if (item.getItemId() == R.id.menu_settings_option){
+        if (item.getItemId() == R.id.menu_settings_option) {
             sendUserToSettingsActivity();
         }
-        if (item.getItemId() == R.id.menu_create_group_option){
+        if (item.getItemId() == R.id.menu_create_group_option) {
             requestNewGroup();
         }
-        if (item.getItemId() == R.id.menu_signout_option){
+        if (item.getItemId() == R.id.menu_signout_option) {
             updateUserStatus("Offline");
             firebaseAuth.signOut();
             sendUserToLoginActivity();
@@ -201,10 +200,9 @@ public class MainActivity extends AppCompatActivity {
 
                 // take the groupName from Edit Text and pass it in the method createNewGroup(groupName)
                 String groupName = groupNameField.getText().toString();
-                if (TextUtils.isEmpty(groupName)){
+                if (TextUtils.isEmpty(groupName)) {
                     Toast.makeText(MainActivity.this, "Please enter group name", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
 
                     // this method takes groupName as parameter and save that name in FireBase databaseReference as a GroupNames
                     createNewGroup(groupName);
@@ -235,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<Void> task) {
 
                 // If a group is created successfully, show a Toast message
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
                     Toast.makeText(MainActivity.this, groupName + " group is created successfully", Toast.LENGTH_SHORT).show();
                 }
 
@@ -249,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(settingsIntent);
     }
 
-    private void updateUserStatus(String state){
+    private void updateUserStatus(String state) {
 
         String saveCurrentDate, saveCurrentTime;
 

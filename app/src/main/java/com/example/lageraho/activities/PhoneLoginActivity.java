@@ -2,14 +2,15 @@ package com.example.lageraho.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.lageraho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -82,10 +83,9 @@ public class PhoneLoginActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 String verificationCode = enterVerificationCode.getText().toString();
-                if (TextUtils.isEmpty(verificationCode)){
+                if (TextUtils.isEmpty(verificationCode)) {
                     Toast.makeText(PhoneLoginActivity.this, "Enter verification Code first", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
 
                     progressDialog.setTitle("Verification Code");
                     progressDialog.setMessage("Please wait...");
@@ -155,8 +155,7 @@ public class PhoneLoginActivity extends AppCompatActivity {
                             progressDialog.dismiss();
                             Toast.makeText(PhoneLoginActivity.this, "Your are logged in successfully", Toast.LENGTH_SHORT).show();
                             sendUserToMainActivity();
-                        }
-                        else {
+                        } else {
 
                             String errorMessage = task.getException().toString();
                             Toast.makeText(PhoneLoginActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
