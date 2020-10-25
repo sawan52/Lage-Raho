@@ -13,42 +13,30 @@
         android:roundIcon="@mipmap/launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name="com.example.lage_raho.activities.ChatActivity"
             android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
-
         <activity
             android:name="com.example.lage_raho.activities.ProfileActivity"
             android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
-
         <activity
             android:name="com.example.lage_raho.activities.FindFriendsActivity"
             android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
-
         <activity android:name="com.example.lage_raho.activities.PhoneLoginActivity" />
-
         <activity android:name="com.example.lage_raho.activities.GroupChatActivity" />
-
         <activity
             android:name="com.example.lage_raho.activities.SettingsActivity"
             android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
-
         <activity android:name="com.example.lage_raho.activities.RegisterActivity" />
-
         <activity android:name="com.example.lage_raho.activities.LogInActivity" />
-
         <activity android:name="com.example.lage_raho.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
     </application>
-
 </manifest>
