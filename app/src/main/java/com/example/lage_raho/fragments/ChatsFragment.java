@@ -1,4 +1,4 @@
-package com.example.lageraho.fragments;
+package com.example.lage_raho.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lageraho.R;
-import com.example.lageraho.activities.ChatActivity;
-import com.example.lageraho.classes.Contacts;
+import com.example.lage_raho.R;
+import com.example.lage_raho.activities.ChatActivity;
+import com.example.lage_raho.classes.Contacts;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
@@ -165,4 +165,3 @@ public class ChatsFragment extends Fragment {
         }
     }
 }
-

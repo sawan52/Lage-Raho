@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lageraho.R;
-import com.example.lageraho.classes.Contacts;
+import com.example.lage_raho.R;
+import com.example.lage_raho.classes.Contacts;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;

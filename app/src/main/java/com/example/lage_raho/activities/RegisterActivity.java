@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -6,16 +6,16 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.lageraho.R;
+import com.example.lage_raho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +24,7 @@ import com.google.firebase.iid.FirebaseInstanceId;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText userEmail, userPassword;
+    private TextInputEditText userEmail, userPassword;
     private Button createAccountButton;
     private TextView alreadyHaveAccount;
     private FirebaseAuth firebaseAuth;
@@ -126,7 +126,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void sendUserToLoginActivity() {
-        Intent loginIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+        Intent loginIntent = new Intent(RegisterActivity.this, LogInActivity.class);
         startActivity(loginIntent);
         finish();
     }

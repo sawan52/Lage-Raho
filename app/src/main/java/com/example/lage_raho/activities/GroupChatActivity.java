@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.lageraho.R;
+import com.example.lage_raho.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;

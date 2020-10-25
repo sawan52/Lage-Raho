@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorAccent"
-    tools:context=".activities.RegisterActivity">
+    tools:context=".activities.LogInActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/register_email"
+                    android:id="@+id/login_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email Id"
@@ -42,7 +42,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/register_password"
+                    android:id="@+id/login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
@@ -51,18 +51,29 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/register_button"
+                android:id="@+id/forget_password_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:background="#00000000"
+                android:elevation="0dp"
+                android:gravity="center_vertical"
+                android:text="Forget Password?" />
+
+            <Button
+                android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="#000"
                 android:gravity="center"
-                android:text="Sign Up"
+                android:text="Sign In"
                 android:textColor="#FFF" />
 
             <Button
-                android:id="@+id/already_have_an_account_link"
+                android:id="@+id/need_new_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -70,10 +81,24 @@
                 android:background="#00000000"
                 android:elevation="0dp"
                 android:gravity="center"
-                android:text="Already have an account? Sign In"
+                android:text="New User? SIGN UP"
                 android:textColor="#000" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/google_sign_in_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="#000"
+            android:gravity="center"
+            android:text="Sign In with Google"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <TextView
             android:id="@+id/textView"
@@ -82,7 +107,7 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/bungee"
             android:gravity="center_horizontal"
-            android:text="Sign Up"
+            android:text="Sign In"
             android:textColor="#000000"
             android:textSize="66sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -101,6 +126,32 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="------------------------------ or Sign In using ------------------------------"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+        <Button
+            android:id="@+id/phone_login_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="32dp"
+            android:background="#000"
+            android:gravity="center"
+            android:text="Sign In with Number"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/google_sign_in_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

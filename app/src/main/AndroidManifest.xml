@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.lageraho">
+    package="com.example.lage_raho">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -15,28 +15,30 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".activities.ChatActivity"
-            android:parentActivityName=".activities.MainActivity" />
-
-        <activity android:name=".activities.ProfileActivity" />
+            android:name="com.example.lage_raho.activities.ChatActivity"
+            android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
 
         <activity
-            android:name=".activities.FindFriendsActivity"
-            android:parentActivityName=".activities.MainActivity" />
-
-        <activity android:name=".activities.PhoneLoginActivity" />
-
-        <activity android:name=".activities.GroupChatActivity" />
+            android:name="com.example.lage_raho.activities.ProfileActivity"
+            android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
 
         <activity
-            android:name=".activities.SettingsActivity"
-            android:parentActivityName=".activities.MainActivity" />
+            android:name="com.example.lage_raho.activities.FindFriendsActivity"
+            android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
 
-        <activity android:name=".activities.RegisterActivity" />
+        <activity android:name="com.example.lage_raho.activities.PhoneLoginActivity" />
 
-        <activity android:name=".activities.LoginActivity" />
+        <activity android:name="com.example.lage_raho.activities.GroupChatActivity" />
 
-        <activity android:name=".activities.MainActivity">
+        <activity
+            android:name="com.example.lage_raho.activities.SettingsActivity"
+            android:parentActivityName="com.example.lage_raho.activities.MainActivity" />
+
+        <activity android:name="com.example.lage_raho.activities.RegisterActivity" />
+
+        <activity android:name="com.example.lage_raho.activities.LogInActivity" />
+
+        <activity android:name="com.example.lage_raho.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

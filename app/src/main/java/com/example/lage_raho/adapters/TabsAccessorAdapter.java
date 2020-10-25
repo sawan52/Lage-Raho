@@ -1,14 +1,14 @@
-package com.example.lageraho.adapters;
+package com.example.lage_raho.adapters;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.lageraho.fragments.ChatsFragment;
-import com.example.lageraho.fragments.ContactFragment;
-import com.example.lageraho.fragments.GroupsFragment;
-import com.example.lageraho.fragments.NotesFragment;
-import com.example.lageraho.fragments.RequestsFragment;
+import com.example.lage_raho.fragments.ChatsFragment;
+import com.example.lage_raho.fragments.ContactFragment;
+import com.example.lage_raho.fragments.GroupsFragment;
+import com.example.lage_raho.fragments.NotesFragment;
+import com.example.lage_raho.fragments.RequestsFragment;
 import com.google.firebase.database.annotations.Nullable;
 
 public class TabsAccessorAdapter extends FragmentPagerAdapter {

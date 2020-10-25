@@ -8,8 +8,6 @@
         <item name="colorAccent">@color/colorTabBlinker</item>
     </style>
 
-    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog">
-
-    </style>
+    <style name="AlertDialog" parent="Base.Theme.AppCompat.Light.Dialog" />
 
 </resources>

@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -17,9 +17,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lageraho.R;
-import com.example.lageraho.adapters.MessageAdapter;
-import com.example.lageraho.classes.Messages;
+import com.example.lage_raho.R;
+import com.example.lage_raho.adapters.MessageAdapter;
+import com.example.lage_raho.classes.Messages;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -232,4 +232,3 @@ public class ChatActivity extends AppCompatActivity {
         privateMessagesList.setAdapter(messageAdapter);
     }
 }
-

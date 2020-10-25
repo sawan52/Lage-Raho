@@ -1,4 +1,4 @@
-package com.example.lageraho.classes;
+package com.example.lage_raho.classes;
 
 // created this class to retrieve users messages...
 public class Messages {

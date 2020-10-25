@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.lageraho.R;
+import com.example.lage_raho.R;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -47,7 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth; // created a variable for firebase authentication
     private DatabaseReference rootDatabaseReference; // created a for firebase Database reference
-    private StorageReference profileImagereference;
+    private StorageReference profileImageReference;
 
     private static final int GALLERY_PICK_UP = 1;
 
@@ -66,11 +66,10 @@ public class SettingsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle("Account Settings");
 
-
         firebaseAuth = FirebaseAuth.getInstance();
         currentUserID = firebaseAuth.getCurrentUser().getUid();  // return the current userId
         rootDatabaseReference = FirebaseDatabase.getInstance().getReference(); // provide the fireBase database reference
-        profileImagereference = FirebaseStorage.getInstance().getReference().child("Profile Images");
+        profileImageReference = FirebaseStorage.getInstance().getReference().child("Profile Images");
 
         updateAccountSettings = findViewById(R.id.update_setting_button);
         userName = findViewById(R.id.set_user_name);
@@ -213,68 +212,68 @@ public class SettingsActivity extends AppCompatActivity {
                     .setGuidelines(CropImageView.Guidelines.ON)
                     .setAspectRatio(1, 1)
                     .start(this);
-        }
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+            if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                CropImage.ActivityResult result = CropImage.getActivityResult(data);
 
-            if (resultCode == RESULT_OK) {
+                if (resultCode == RESULT_OK) {
 
-                progressDialog.setTitle("Set Profile Image");
-                progressDialog.setMessage("Please wait...");
-                progressDialog.setCanceledOnTouchOutside(false);
-                progressDialog.show();
+                    progressDialog.setTitle("Set Profile Image");
+                    progressDialog.setMessage("Please wait...");
+                    progressDialog.setCanceledOnTouchOutside(false);
+                    progressDialog.show();
 
-                Uri resultUri = result.getUri();
+                    Uri resultUri = result.getUri();
 
-                final StorageReference filePathReference = profileImagereference.child(currentUserID + ".jpg");
+                    final StorageReference filePathReference = profileImageReference.child(currentUserID + ".jpg");
 
-                final UploadTask uploadTask = filePathReference.putFile(resultUri);
-                uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                    @Override
-                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    final UploadTask uploadTask = filePathReference.putFile(resultUri);
+                    uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                        Toast.makeText(SettingsActivity.this, "Profile Image uploaded successfully!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SettingsActivity.this, "Profile Image uploaded successfully!", Toast.LENGTH_SHORT).show();
 
-                        Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                            @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                            Task<Uri> uriTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                                @Override
+                                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
 
-                                if (!task.isSuccessful()) {
-                                    progressDialog.dismiss();
-                                    throw task.getException();
+                                    if (!task.isSuccessful()) {
+                                        progressDialog.dismiss();
+                                        throw task.getException();
+                                    }
+
+                                    downloadUrl = filePathReference.getDownloadUrl().toString();
+                                    return filePathReference.getDownloadUrl();
+
                                 }
+                            }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        downloadUrl = task.getResult().toString();
 
-                                downloadUrl = filePathReference.getDownloadUrl().toString();
-                                return filePathReference.getDownloadUrl();
+                                        rootDatabaseReference.child("Users").child(currentUserID).child("Image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
 
-                            }
-                        }).addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()) {
-                                    downloadUrl = task.getResult().toString();
-
-                                    rootDatabaseReference.child("Users").child(currentUserID).child("Image").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-
-                                            if (task.isSuccessful()) {
-                                                progressDialog.dismiss();
-                                                Toast.makeText(SettingsActivity.this, "Profile Image URL saved!", Toast.LENGTH_SHORT).show();
-                                            } else {
-                                                String errorMessage = task.getException().toString();
-                                                progressDialog.dismiss();
-                                                Toast.makeText(SettingsActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                                                if (task.isSuccessful()) {
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(SettingsActivity.this, "Profile Image URL saved!", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    String errorMessage = task.getException().toString();
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(SettingsActivity.this, "Error: " + errorMessage, Toast.LENGTH_SHORT).show();
+                                                }
                                             }
-                                        }
-                                    });
+                                        });
+                                    }
                                 }
-                            }
-                        });
-                    }
-                });
+                            });
+                        }
+                    });
 
+                }
             }
         }
     }

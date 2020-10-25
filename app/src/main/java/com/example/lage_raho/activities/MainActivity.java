@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,8 +16,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.lageraho.R;
-import com.example.lageraho.adapters.TabsAccessorAdapter;
+import com.example.lage_raho.R;
+import com.example.lage_raho.adapters.TabsAccessorAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         // Set the Toolbar for our App
         mToolbar = findViewById(R.id.main_page_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Lage Raho");
+        getSupportActionBar().setTitle(R.string.app_name);
 
         // Set the View Pager for all the three Fragments
         mViewPager = findViewById(R.id.main_tabs_pager);
@@ -141,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void sendUserToLoginActivity() {
-        Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
-        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        Intent loginIntent = new Intent(MainActivity.this, LogInActivity.class);
+//        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(loginIntent);
         finish();
     }

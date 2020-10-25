@@ -1,4 +1,4 @@
-package com.example.lageraho.fragments;
+package com.example.lage_raho.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +12,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
-import com.example.lageraho.R;
-import com.example.lageraho.activities.GroupChatActivity;
+import com.example.lage_raho.R;
+import com.example.lage_raho.activities.GroupChatActivity;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;

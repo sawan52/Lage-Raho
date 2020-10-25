@@ -1,4 +1,4 @@
-package com.example.lageraho.activities;
+package com.example.lage_raho.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -6,15 +6,15 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.lageraho.R;
+import com.example.lage_raho.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,14 +26,13 @@ import java.util.concurrent.TimeUnit;
 public class PhoneLoginActivity extends AppCompatActivity {
 
     private Button sendVerificationCode, verifyCode;
-    private EditText enterMobileNumber, enterVerificationCode;
+    private TextInputEditText enterMobileNumber, enterVerificationCode;
     private String mVerificationId;
 
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private PhoneAuthProvider.ForceResendingToken mResendToken;
 
     private FirebaseAuth mAuth;
-
     private ProgressDialog progressDialog;
 
 
